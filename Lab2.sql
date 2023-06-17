@@ -23,7 +23,7 @@ ENGINE = Distributed(
 
 /* 
 Insert data:
-cat shared-data/clickhouse_data/transactions_12M.parquet | clickhouse-client --host=clickhouse-1.clickhouse.clickhouse --user=gtsyganov_371942 --password=n9sO1199Wz --query="INSERT INTO gtsyganov_371942.transactions_d FORMAT Parquet"
+cat shared-data/clickhouse_data/transactions_12M.parquet | clickhouse-client --host=clickhouse-1.clickhouse.clickhouse --user=gtsyganov_371942 --password=password --query="INSERT INTO gtsyganov_371942.transactions_d FORMAT Parquet"
 */
 
 -- MV 1. Average amount for incoming and outcoming transactions by months and days for each user
