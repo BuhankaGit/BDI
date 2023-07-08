@@ -50,7 +50,7 @@ FROM
         user_id_out as user_id, 
         avgState(amount) as avg_outcome, 
         toDate(datetime) as date
-    FROM gtsyganov_371942.transactions_d 
+    FROM gtsyganov_371942.transactions 
     GROUP BY user_id_out, toDate(datetime)
 ) B 
 ON A.user_id = B.user_id AND A.date = B.date;
@@ -69,7 +69,7 @@ FROM
         user_id_in as user_id, 
         avgState(amount) as avg_income,
         toMonth(datetime) as month
-    FROM gtsyganov_371942.transactions_d 
+    FROM gtsyganov_371942.transactions 
     GROUP BY user_id_in, toMonth(datetime)
 ) A 
     JOIN 
@@ -78,7 +78,7 @@ FROM
         user_id_out as user_id, 
         avgState(amount) as avg_outcome,
         toMonth(datetime) as month
-    FROM gtsyganov_371942.transactions_d 
+    FROM gtsyganov_371942.transactions 
     GROUP BY user_id_out, toMonth(datetime)
 ) B 
 ON A.user_id = B.user_id AND A.month = B.month;
@@ -98,7 +98,7 @@ FROM
         user_id_out as user_id, 
         toMonth(datetime) as month, 
         sum(amount) as amount 
-    FROM gtsyganov_371942.transactions_d 
+    FROM gtsyganov_371942.transactions 
     GROUP BY user_id, toMonth(datetime)
 ) A 
 JOIN 
@@ -107,7 +107,7 @@ JOIN
         user_id_in as user_id, 
         toMonth(datetime) as month, 
         sum(amount) as amount 
-    FROM gtsyganov_371942.transactions_d 
+    FROM gtsyganov_371942.transactions 
     GROUP BY user_id, toMonth(datetime)
 ) B 
 ON A.user_id = B.user_id AND A.month = B.month;
@@ -125,7 +125,7 @@ FROM
     SELECT 
         user_id_out as user_id, 
         sum(amount) as outcome 
-    FROM gtsyganov_371942.transactions_d 
+    FROM gtsyganov_371942.transactions 
     GROUP BY user_id_out
 ) A 
 JOIN 
@@ -133,7 +133,7 @@ JOIN
     SELECT 
         user_id_in as user_id, 
         sum(amount) as income 
-    FROM gtsyganov_371942.transactions_d 
+    FROM gtsyganov_371942.transactions 
     GROUP BY user_id_in
 ) B 
 ON A.user_id = B.user_id;
